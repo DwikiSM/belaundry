@@ -39,11 +39,13 @@ const Sidebar = ({ title }) => {
   const isActive = title
 
   return (
-    <div className='hidden h-screen w-64 bg-primary p-4 text-white md:block'>
+    <div className='hidden h-screen w-60 bg-primary p-4 text-white md:block'>
       {/* BeLaundry */}
-      <div className='flex justify-center space-x-2'>
-        <div className='h-10 w-10 shrink-0 grow-0 rounded-full bg-primary ring-4 ring-white'></div>
-        <div className='float-right h-4 w-4 rounded-full border-2 border-white bg-danger'></div>
+      <div className='flex items-center justify-center space-x-2'>
+        <div className='h-10 w-10 shrink-0 grow-0 rounded-full bg-primary ring-4 ring-white' />
+        <div className='h-10'>
+          <div className='h-4 w-4 rounded-full border-2 border-white bg-danger' />
+        </div>
         <h1 className='text-xl font-bold'>BeLaundry</h1>
       </div>
       {/* Menu */}

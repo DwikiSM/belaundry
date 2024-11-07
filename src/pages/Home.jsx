@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
+import ReportCard from '../components/ReportCard'
+
 const Home = () => {
   const { setTitle } = useOutletContext()
 
@@ -8,7 +10,13 @@ const Home = () => {
     setTitle('Home')
   }, [setTitle])
 
-  return <div>Home page</div>
+  return (
+    <div className='p-4'>
+      <ReportCard />
+      {/* <SalesStatisticTable filterSales={filterSales}/>
+      <TopSales filterSales={filterSales}/> */}
+    </div>
+  )
 }
 
 export default Home

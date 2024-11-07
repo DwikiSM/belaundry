@@ -21,8 +21,8 @@ const Layout = () => {
 
   return (
     <div className='flex'>
-      <Sidebar title={title} />
-      <div className='w-full'>
+      <Sidebar className='w-1/5' title={title} />
+      <div className='max-h-screen w-full overflow-y-auto'>
         <Header title={title} username={username} />
         <Outlet context={{ setTitle }} />
       </div>
