@@ -3,6 +3,19 @@ import { useOutletContext } from 'react-router-dom'
 
 import { getProductsReport } from '../services/api'
 
+import { Line } from 'react-chartjs-2'
+import {
+  Chart,
+  Filler,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js'
+
+Chart.register(Filler, PointElement, LineElement, Title, Tooltip, Legend)
+
 const Sales = () => {
   const { setTitle } = useOutletContext()
   const [report, setReport] = useState([])
@@ -21,28 +34,35 @@ const Sales = () => {
       })
   }, [])
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      datalabels: {
+        display: false,
+      },
+    },
+  }
+
+  const data = {
+    labels: report.map((data) => data.created_at),
+    datasets: [
+      {
+        data: report.map((data) => data.total),
+        fill: true,
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        borderColor: 'rgba(75,192,192,1)',
+        tension: 0.1,
+      },
+    ],
+  }
+
   return (
-    <div className='m-5 min-h-96 min-w-96 rounded-2xl bg-white p-8'>
-      <div className='relative overflow-x-auto'>
-        <table className='w-full text-left text-sm'>
-          <thead className='border-b-2'>
-            <tr>
-              <th className='px-6 py-3'>Date</th>
-              <th className='px-6 py-3'>Total Sold</th>
-              <th className='px-6 py-3'>Income</th>
-            </tr>
-          </thead>
-          <tbody>
-            {report.map((data, index) => (
-              <tr key={index} className='hover:bg-[#F2F7FB]'>
-                <td className='px-6 py-4'>{data.created_at}</td>
-                <td className='px-6 py-4'>{data.total}</td>
-                <td className='px-6 py-4'>${data.income}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className='m-4 h-96 min-w-96 rounded-2xl bg-white p-4'>
+      <Line options={options} data={data} />
     </div>
   )
 }

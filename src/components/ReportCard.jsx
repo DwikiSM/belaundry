@@ -38,6 +38,9 @@ const ReportCard = () => {
       },
     },
     plugins: {
+      legend: {
+        display: false,
+      },
       tooltip: {
         callbacks: {
           label: ({ raw }) => raw.total + ' sold for ' + raw.income + '$',
@@ -74,7 +77,7 @@ const ReportCard = () => {
   }
 
   return (
-    <div className='h-96 min-w-96 rounded-2xl bg-white p-8'>
+    <div className='h-96 min-w-96 rounded-2xl bg-white p-4'>
       <div className='mb-8 flex items-center justify-between'>
         <h1 className='font-bold'>Products Sold</h1>
         {/* add dropdown function */}
