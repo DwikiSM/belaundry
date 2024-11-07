@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         background: '#E7F5FD',
+        background2: '#F5FCFF',
         accent: '#CAECFF',
         primary: '#2D9CDB',
         secondary: '#0099EE',

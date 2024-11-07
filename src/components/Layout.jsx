@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { getUserInfo } from '../services/api'
 
 const Layout = () => {
-  const [title, setTitle] = useState('default')
+  const [title, setTitle] = useState('')
   const [username, setUsername] = useState()
 
   useEffect(() => {

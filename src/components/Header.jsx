@@ -6,7 +6,7 @@ const Header = ({ title, username }) => {
     <div className='flex w-full items-center justify-between bg-white p-4'>
       <h1 className='text-3xl font-bold'>{title}</h1>
       <div className='flex items-center space-x-1'>
-        <AiOutlineUser className='h-6 w-6' />
+        <AiOutlineUser className='h-6 w-6 flex-shrink-0' />
         <div>{username}</div>
       </div>
     </div>
