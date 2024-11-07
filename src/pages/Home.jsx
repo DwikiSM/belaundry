@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useOutletContext } from 'react-router-dom'
 
 import ReportCard from '../components/ReportCard'
+import TopSalesCard from '../components/TopSalesCard'
 
 const Home = () => {
   const { setTitle } = useOutletContext()
@@ -13,8 +14,7 @@ const Home = () => {
   return (
     <div className='p-4'>
       <ReportCard />
-      {/* <SalesStatisticTable filterSales={filterSales}/>
-      <TopSales filterSales={filterSales}/> */}
+      <TopSalesCard />
     </div>
   )
 }

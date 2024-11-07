@@ -73,8 +73,8 @@ const ReportCard = () => {
   }
 
   return (
-    <div className='bg-white p-8'>
-      <div className='mb-8 flex justify-between'>
+    <div className='min-w-96 rounded-2xl bg-white p-8'>
+      <div className='mb-8 flex items-center justify-between'>
         <h1 className='font-bold'>Products Sold</h1>
         {/* add dropdown function */}
         <Dropdown />
