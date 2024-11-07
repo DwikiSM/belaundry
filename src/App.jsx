@@ -1,34 +1,25 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import { getUserInfo } from './services/api'
+
+import Layout from './components/Layout'
+
+import Home from './pages/Home'
+import Products from './pages/Products'
+import Sales from './pages/Sales'
+import Settings from './pages/Settings'
 
 function App() {
-  const [name, setName] = useState()
-
-  useEffect(() => {
-    getUserInfo()
-      .then(({ data }) => {
-        setName(data.response.name)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
-
   return (
     <BrowserRouter>
       <Routes>
         {/* Public */}
-        <Route
-          path='/'
-          element={
-            <h1 className='container'>
-              {name ? 'Welcome, ' + name : 'Welcome'}
-            </h1>
-          }
-        />
+        <Route path='/' element={<a href='/admin'>go to admin</a>} />
         {/* Admin */}
-        <Route path='/admin' element={'admin'} />
+        <Route path='/admin' element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path='products' element={<Products />} />
+          <Route path='sales' element={<Sales />} />
+          <Route path='settings' element={<Settings />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   )

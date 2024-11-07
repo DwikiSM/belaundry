@@ -1,0 +1,33 @@
+import Sidebar from './Sidebar'
+import Header from './Header'
+
+import { Outlet } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { getUserInfo } from '../services/api'
+
+const Layout = () => {
+  const [title, setTitle] = useState('default')
+  const [username, setUsername] = useState()
+
+  useEffect(() => {
+    getUserInfo()
+      .then(({ data }) => {
+        setUsername(data.response.name)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }, [])
+
+  return (
+    <div className='flex'>
+      <Sidebar title={title} />
+      <div className='w-full'>
+        <Header title={title} username={username} />
+        <Outlet context={{ setTitle }} />
+      </div>
+    </div>
+  )
+}
+
+export default Layout
