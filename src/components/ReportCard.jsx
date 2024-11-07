@@ -31,6 +31,7 @@ const ReportCard = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     layout: {
       padding: {
         top: 20,
@@ -73,13 +74,15 @@ const ReportCard = () => {
   }
 
   return (
-    <div className='min-w-96 rounded-2xl bg-white p-8'>
+    <div className='h-96 min-w-96 rounded-2xl bg-white p-8'>
       <div className='mb-8 flex items-center justify-between'>
         <h1 className='font-bold'>Products Sold</h1>
         {/* add dropdown function */}
         <Dropdown />
       </div>
-      <Bar options={options} data={data} plugins={[ChartDataLabels]} />
+      <div className='h-5/6'>
+        <Bar options={options} data={data} plugins={[ChartDataLabels]} />
+      </div>
     </div>
   )
 }
