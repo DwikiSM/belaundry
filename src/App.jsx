@@ -2,19 +2,20 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Layout from './components/Layout'
 
+import Hero from './pages/Hero'
 import Home from './pages/Home'
 import Products from './pages/Products'
-import Sales from './pages/Sales'
-import Settings from './pages/Settings'
 import ProductDetail from './pages/ProductDetail'
 import ProductAdd from './pages/ProductAdd'
+import Sales from './pages/Sales'
+import Settings from './pages/Settings'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Public */}
-        <Route path='/' element={<a href='/admin'>go to admin</a>} />
+        <Route path='/' element={<Hero />} />
         {/* Admin */}
         <Route path='/admin' element={<Layout />}>
           <Route index element={<Home />} />
