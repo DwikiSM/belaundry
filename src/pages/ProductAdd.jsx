@@ -134,7 +134,7 @@ const ProductAdd = () => {
             </div>
             <div />
             <div className='mb-5 hidden w-full pt-6 sm:block'>
-              <Button className='min-w-12 self-end'>Publish</Button>
+              <Button className='float-right min-w-12 self-end'>Publish</Button>
             </div>
           </div>
         </div>

@@ -25,7 +25,9 @@ const Products = () => {
   return (
     <div className='m-4 flex min-w-96 flex-col rounded-2xl bg-white p-8'>
       <div>
-        <Button onClick={() => navigate('add')}>Add new Product</Button>
+        <Button onClick={() => navigate('add')} className={'float-right'}>
+          Add new Product
+        </Button>
       </div>
 
       <div className='relative overflow-x-auto'>
