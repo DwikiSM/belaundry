@@ -13,7 +13,7 @@ import {
 
 import Button from './Button'
 
-const ProductForm = ({ categories }) => {
+const ProductForm = ({ categories, onSubmit }) => {
   const [isModalOpen, setModalOpen] = useState(false)
 
   const [formData, setFormData] = useState({
@@ -43,6 +43,7 @@ const ProductForm = ({ categories }) => {
     try {
       await validationSchema.validate(formData, { abortEarly: false })
       setErrors({})
+      onSubmit(formData)
     } catch (error) {
       const newErrors = {}
       error.inner.forEach((err) => {
@@ -262,7 +263,10 @@ const ProductForm = ({ categories }) => {
               <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse'>
                 <button
                   type='button'
-                  onClick={() => setModalOpen(false)}
+                  onClick={() => {
+                    setModalOpen(false)
+                    setErrors({})
+                  }}
                   className='inline-flex w-full justify-center rounded-md bg-success px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto'
                 >
                   Upload
@@ -286,6 +290,7 @@ const ProductForm = ({ categories }) => {
 
 ProductForm.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.object),
+  onSubmit: PropTypes.func,
 }
 
 export default ProductForm

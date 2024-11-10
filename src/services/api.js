@@ -27,3 +27,8 @@ export const getUserInfo = async () =>
   await axios.get(BASE_URL + '/platform/user/info', {
     headers: { token: KEY },
   })
+
+export const addProduct = async (data) =>
+  await axios.post(BASE_URL + '/platform/product', data, {
+    headers: { token: KEY },
+  })

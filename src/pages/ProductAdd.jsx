@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react'
-import { useOutletContext } from 'react-router-dom'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 
-import { getProductsCategory } from '../services/api'
+import { addProduct, getProductsCategory } from '../services/api'
 
 import ProductForm from '../components/ProductForm.jsx'
 
 const ProductAdd = () => {
   const { setTitle } = useOutletContext()
   const [categories, setCategories] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
     getProductsCategory()
@@ -23,9 +24,21 @@ const ProductAdd = () => {
     setTitle('Products')
   }, [setTitle])
 
+  const handleSubmit = async (data) => {
+    // update post function
+    await addProduct(data)
+      .then((res) => {
+        console.log(res)
+        navigate('/admin/products')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   return (
     <div>
-      <ProductForm categories={categories} />
+      <ProductForm categories={categories} onSubmit={handleSubmit} />
     </div>
   )
 }
