@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import Layout from './components/Layout'
+import HomeApp from './pages/HomeApp'
+import ProductDetailApp from './pages/ProductDetailApp'
 
-import Hero from './pages/Hero'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import ProductDetail from './pages/ProductDetail'
@@ -10,12 +10,15 @@ import ProductAdd from './pages/ProductAdd'
 import Sales from './pages/Sales'
 import Settings from './pages/Settings'
 
+import Layout from './components/Layout'
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         {/* Public */}
-        <Route path='/' element={<Hero />} />
+        <Route path='/' element={<HomeApp />} />
+        <Route path='products/:id' element={<ProductDetailApp />} />
         {/* Admin */}
         <Route path='/admin' element={<Layout />}>
           <Route index element={<Home />} />
