@@ -3,6 +3,8 @@ import axios from 'axios'
 const BASE_URL = import.meta.env.VITE_HOST
 const KEY = import.meta.env.VITE_KEY
 
+// TODO: add axios interceptor
+
 export const getProduct = async (id) =>
   await axios.get(BASE_URL + '/platform/product/' + id, {
     headers: { token: KEY },

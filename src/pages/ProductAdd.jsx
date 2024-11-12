@@ -25,7 +25,6 @@ const ProductAdd = () => {
   }, [setTitle])
 
   const handleSubmit = async (data) => {
-    // update post function
     await addProduct(data)
       .then((res) => {
         console.log(res)

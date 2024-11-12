@@ -4,14 +4,8 @@ import PropTypes from 'prop-types'
 import * as Yup from 'yup'
 import { FaRegImage } from 'react-icons/fa6'
 
-import {
-  Dialog,
-  DialogBackdrop,
-  DialogPanel,
-  DialogTitle,
-} from '@headlessui/react'
-
 import Button from './Button'
+import Modal from './Modal'
 
 const ProductForm = ({ categories, onSubmit }) => {
   const [isModalOpen, setModalOpen] = useState(false)
@@ -225,68 +219,47 @@ const ProductForm = ({ categories, onSubmit }) => {
       >
         Publish
       </Button>
-      {/* Modal */}
-      <Dialog
-        open={isModalOpen}
-        onClose={setModalOpen}
-        className='relative z-10'
-      >
-        <DialogBackdrop
-          transition
-          className='fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in'
-        />
-        <div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
-          <div className='flex min-h-full items-start justify-center p-4 text-center'>
-            <DialogPanel
-              transition
-              className='relative my-8 w-full max-w-lg transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-[closed]:translate-y-4 data-[closed]:opacity-0 data-[enter]:duration-300 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in data-[closed]:sm:translate-y-0 data-[closed]:sm:scale-95'
-            >
-              <div className='bg-white px-4 py-3'>
-                <div className='text-left'>
-                  <DialogTitle
-                    as='h3'
-                    className='text-base font-semibold text-gray-900'
-                  >
-                    Image Link
-                  </DialogTitle>
-                  <div className='mt-2'>
-                    <div>
-                      <input
-                        type='url'
-                        id='image'
-                        name='image'
-                        value={formData.image}
-                        onChange={handleChange}
-                        className='block w-full rounded-lg border border-primary bg-white p-2.5 text-sm focus:border-danger'
-                      />
-                    </div>
-                  </div>
-                </div>
+      <Modal isOpen={isModalOpen} onClose={() => setModalOpen(false)}>
+        <div className='bg-white px-4 py-3'>
+          <div className='text-left'>
+            <h3 className='text-base font-semibold text-gray-900'>
+              Image Link
+            </h3>
+            <div className='mt-2'>
+              <div>
+                <input
+                  type='url'
+                  id='image'
+                  name='image'
+                  value={formData.image}
+                  onChange={handleChange}
+                  className='block w-full rounded-lg border border-primary bg-white p-2.5 text-sm focus:border-danger'
+                />
               </div>
-              <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse'>
-                <button
-                  type='button'
-                  onClick={() => {
-                    setModalOpen(false)
-                    setErrors({})
-                  }}
-                  className='inline-flex w-full justify-center rounded-md bg-success px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto'
-                >
-                  Upload
-                </button>
-                <button
-                  type='button'
-                  data-autofocus
-                  onClick={() => setModalOpen(false)}
-                  className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
-                >
-                  Cancel
-                </button>
-              </div>
-            </DialogPanel>
+            </div>
           </div>
         </div>
-      </Dialog>
+        <div className='bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse'>
+          <button
+            type='button'
+            onClick={() => {
+              setModalOpen(false)
+              setErrors({})
+            }}
+            className='inline-flex w-full justify-center rounded-md bg-success px-3 py-2 text-sm font-semibold text-white shadow-sm sm:ml-3 sm:w-auto'
+          >
+            Upload
+          </button>
+          <button
+            type='button'
+            data-autofocus
+            onClick={() => setModalOpen(false)}
+            className='mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto'
+          >
+            Cancel
+          </button>
+        </div>
+      </Modal>
     </div>
   )
 }
