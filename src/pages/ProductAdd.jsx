@@ -26,8 +26,7 @@ const ProductAdd = () => {
 
   const handleSubmit = async (data) => {
     await addProduct(data)
-      .then((res) => {
-        console.log(res)
+      .then(() => {
         navigate('/admin/products')
       })
       .catch((err) => {

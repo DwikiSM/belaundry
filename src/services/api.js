@@ -39,3 +39,8 @@ export const deleteProduct = async (id) =>
   await axios.delete(BASE_URL + '/platform/product/' + id, {
     headers: { token: KEY },
   })
+
+export const updateProduct = async (id, data) =>
+  await axios.put(BASE_URL + '/platform/product/' + id, data, {
+    headers: { token: KEY },
+  })

@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { useParams, useOutletContext, useNavigate } from 'react-router-dom'
 import { FaChevronLeft } from 'react-icons/fa6'
 
-import { deleteProduct, getProduct } from '../services/api'
+import { deleteProduct, getProduct, updateProduct } from '../services/api'
 
 import Button from '../components/Button'
 import Modal from '../components/Modal'
+import ProductEditForm from '../components/ProductEditForm'
 
 const ProductDetail = () => {
   const { setTitle } = useOutletContext()
@@ -13,6 +14,7 @@ const ProductDetail = () => {
   const navigate = useNavigate()
 
   const [isModalOpen, setModalOpen] = useState(false)
+  const [isModal2Open, setModal2Open] = useState(false)
   const [product, setProduct] = useState({})
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const ProductDetail = () => {
           >
             <FaChevronLeft className='size-6' />
           </div>
-          <div className='flex flex-col-reverse flex-wrap justify-between sm:flex-row'>
+          <div className='flex min-h-52 flex-col-reverse flex-wrap justify-between sm:flex-row'>
             <div className='flex-1'>
               <div className='flex'>
                 <div className='w-1/3'>Id</div>
@@ -70,16 +72,22 @@ const ProductDetail = () => {
                 <div className='w-2/3'>{product.price}</div>
               </div>
             </div>
-            <div className='flex flex-1 justify-center bg-primary'>
+            <div className='flex flex-1 justify-center'>
               <div className=''>
                 <img alt='no image' src={product.image} />
               </div>
             </div>
           </div>
-          <div className=''>
+          <div className='flex gap-2 self-end'>
+            <Button
+              onClick={() => setModal2Open(true)}
+              className='rounded-lg bg-accent bg-opacity-80 px-5 py-2.5 text-black hover:bg-opacity-100'
+            >
+              Edit
+            </Button>
             <Button
               onClick={() => setModalOpen(true)}
-              className='float-right self-center rounded-lg bg-danger px-5 py-2.5 text-white hover:bg-opacity-90'
+              className='rounded-lg bg-danger px-5 py-2.5 text-white hover:bg-opacity-90'
             >
               Delete
             </Button>
@@ -101,8 +109,7 @@ const ProductDetail = () => {
               onClick={async () => {
                 setModalOpen(false)
                 await deleteProduct(id)
-                  .then((res) => {
-                    console.log(res)
+                  .then(() => {
                     navigate(-1)
                   })
                   .catch((err) => {
@@ -122,6 +129,15 @@ const ProductDetail = () => {
               Cancel
             </button>
           </div>
+        </Modal>
+        <Modal isOpen={isModal2Open} onClose={() => setModal2Open(false)}>
+          <ProductEditForm
+            product={product}
+            onSubmit={async (data) => {
+              await updateProduct(id, data)
+              navigate(0)
+            }}
+          />
         </Modal>
       </div>
     )
