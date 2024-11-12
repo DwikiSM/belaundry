@@ -196,7 +196,10 @@ const ProductForm = ({ categories, onSubmit }) => {
             </div>
             <div />
             <div className='mb-5 hidden w-full pt-6 sm:block'>
-              <Button type='submit' className='float-right min-w-12 self-end'>
+              <Button
+                type='submit'
+                className='float-right rounded-lg bg-success px-5 py-2.5 text-white hover:bg-green-400'
+              >
                 Publish
               </Button>
             </div>
@@ -218,7 +221,7 @@ const ProductForm = ({ categories, onSubmit }) => {
       </div>
       <Button
         type='submit'
-        className='mb-44 mt-4 block w-11/12 self-center sm:hidden'
+        className='float-right my-4 w-11/12 self-center rounded-lg bg-success px-5 py-2.5 text-white hover:bg-green-400 sm:hidden'
       >
         Publish
       </Button>
