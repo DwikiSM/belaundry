@@ -15,6 +15,10 @@ export default {
         success: '#56E4A0',
         danger: '#F36868',
       },
+      backgroundImage: () => ({
+        'gradient-to-135': 
+            'linear-gradient(135deg, #0099EE 60%, rgb(0,0,0,0))',
+      })
     },
   },
   plugins: [],

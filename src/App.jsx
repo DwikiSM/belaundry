@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import HomeApp from './pages/HomeApp'
+import InvoicePage from './pages/InvoicePage'
 import ProductDetailApp from './pages/ProductDetailApp'
 
 import Home from './pages/Home'
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         {/* Public */}
         <Route path='/' element={<HomeApp />} />
+        <Route path='invoice' element={<InvoicePage />} />
         <Route path='products/:id' element={<ProductDetailApp />} />
         {/* Admin */}
         <Route path='/admin' element={<Layout />}>

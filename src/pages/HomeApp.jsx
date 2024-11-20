@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { getProducts, getProductsCategory, getUserInfo } from '../services/api'
 
 import BalanceCard from '../components/BalanceCard'
+import InvoiceCard from '../components/InvoiceCard'
 
 const HomeApp = () => {
   const [username, setUsername] = useState()
@@ -42,16 +43,23 @@ const HomeApp = () => {
         <div className='z-10 flex flex-col gap-6'>
           <div className='space-y-1 pl-8 pt-10'>
             <h1 className='text-lg text-white'>
-              {username ? 'Welcome, ' + username : 'Welcome'}
+              {username ? (
+                <div
+                  className='cursor-pointer'
+                  onClick={() => navigate('/admin')}
+                >
+                  Welcome, {username}
+                </div>
+              ) : (
+                'Welcome'
+              )}
             </h1>
             <BalanceCard />
           </div>
           <div className='flex flex-wrap gap-6 pl-8 align-top sm:w-full'>
             <div className='space-y-1'>
               <h1 className='font-semibold text-primary'>Previous Order</h1>
-              <div className='h-44 w-80 rounded-lg bg-white sm:block'>
-                <div>image</div>
-              </div>
+              <InvoiceCard />
             </div>
             <div className='space-y-1'>
               <h1 className='font-semibold text-primary'>Your Most Ordered</h1>
