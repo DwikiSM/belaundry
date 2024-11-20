@@ -36,7 +36,7 @@ const ProductDetail = () => {
 
   return (
     <div className='flex h-screen justify-center bg-background2'>
-      <div className='flex h-screen w-96 flex-col rounded-2xl bg-background'>
+      <div className='flex h-screen w-96 flex-col bg-background'>
         <div className='relative'>
           <div className='absolute left-0 top-0 h-full w-full rounded-2xl bg-gradient-to-t from-primary from-0% to-transparent to-75% group-hover:from-secondary' />
           <div

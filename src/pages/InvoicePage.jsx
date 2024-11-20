@@ -6,7 +6,7 @@ const InvoicePage = () => {
 
   return (
     <div className='flex h-screen justify-center bg-background2'>
-      <div className='relative flex h-screen w-96 flex-col rounded-2xl bg-background'>
+      <div className='relative flex h-screen w-96 flex-col bg-background'>
         <div className='relative'>
           <div
             className='ml-4 mt-6 cursor-pointer text-primary'

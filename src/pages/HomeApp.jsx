@@ -63,12 +63,12 @@ const HomeApp = () => {
             </div>
             <div className='space-y-1'>
               <h1 className='font-semibold text-primary'>Your Most Ordered</h1>
-              <div className='group relative h-44 w-80 overflow-hidden rounded-lg bg-white sm:block'>
+              <div className='group relative h-44 w-80 overflow-hidden rounded-lg bg-white sm:block sm:h-32'>
                 <div className='absolute left-0 top-0 h-full w-full bg-gradient-to-t from-primary from-0% to-transparent to-75% group-hover:from-secondary' />
                 <img
                   src='https://images-ext-2.discordapp.net/external/M9X7BnHKlukTpGBgUyyUfW_sjV8JANqR79-WWJil0R8/https/www.figma.com/file/qPjgycMUWSU9R6TzcqjYiS/image/acbb409ecb20dea313d81fd95b69987161f3bcc6'
                   alt='clothes rack'
-                  className='h-full object-cover'
+                  className='h-full w-full object-cover'
                 />
                 <div className='absolute bottom-3 left-3 text-sm text-white'>
                   <div className='text-lg font-semibold'>Dry Cleaning</div>
