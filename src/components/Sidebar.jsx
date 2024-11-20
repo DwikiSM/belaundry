@@ -8,6 +8,8 @@ import {
   AiOutlineSetting,
 } from 'react-icons/ai'
 
+import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react'
+
 const SIDEBAR_LINKS = [
   {
     id: 1,
@@ -35,11 +37,11 @@ const SIDEBAR_LINKS = [
   },
 ]
 
-const Sidebar = ({ title }) => {
+const Sidebar = ({ title, isOpen, onClick }) => {
   const isActive = title
 
-  return (
-    <div className='hidden h-screen w-60 bg-primary p-4 text-white md:block'>
+  const sidebar = (
+    <div>
       {/* BeLaundry */}
       <div className='mb-8 flex items-center justify-center space-x-2'>
         <div className='h-10 w-10 shrink-0 grow-0 rounded-full bg-primary ring-4 ring-white' />
@@ -61,6 +63,7 @@ const Sidebar = ({ title }) => {
                   ? 'flex items-center justify-start space-x-5 rounded-md bg-white p-3 font-medium text-primary'
                   : 'flex items-center justify-start space-x-5 rounded-md p-3 font-medium hover:bg-white hover:text-primary'
               }
+              onClick={() => onClick(false)}
             >
               <span>{link.icon}</span>
               <span>{link.name}</span>
@@ -70,10 +73,42 @@ const Sidebar = ({ title }) => {
       </div>
     </div>
   )
+
+  return (
+    <div>
+      <Dialog
+        open={isOpen}
+        onClose={onClick}
+        className='relative z-10 block md:hidden'
+      >
+        <DialogBackdrop
+          transition
+          className='fixed inset-0 bg-gray-500 bg-opacity-75'
+        />
+        <div className='fixed inset-0 z-10 w-screen overflow-y-auto'>
+          <div className='flex min-h-full justify-start'>
+            <DialogPanel
+              transition
+              className='relative transform overflow-hidden shadow-xl'
+            >
+              <div className='h-screen w-60 bg-primary p-4 text-white'>
+                {sidebar}
+              </div>
+            </DialogPanel>
+          </div>
+        </div>
+      </Dialog>
+      <div className='hidden h-screen w-60 bg-primary p-4 text-white md:block'>
+        {sidebar}
+      </div>
+    </div>
+  )
 }
 
 Sidebar.propTypes = {
   title: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Sidebar
